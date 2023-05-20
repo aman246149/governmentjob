@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1094774088630",
+    "project_id": "governmentjobs-e96f8",
+    "storage_bucket": "governmentjobs-e96f8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1094774088630:android:30c54ebcd481d959d91717",
+        "android_client_info": {
+          "package_name": "com.example.governmentjob"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1094774088630-c9849vgnlupgqt7ac1t9s48abtblhevk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.governmentjob",
+            "certificate_hash": "9356866c34fab08b9e64d1d37903bc4e35d75fd6"
+          }
+        },
+        {
+          "client_id": "1094774088630-u4756g55tkmslr0jj7h23sd11i3fie31.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCM9hBRJbsQsWsV_JUaUYYpscJhW2pQt4g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1094774088630-u4756g55tkmslr0jj7h23sd11i3fie31.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
