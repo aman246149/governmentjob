@@ -36,229 +36,197 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+          title: Text("JOBS"),
+        ),
+        backgroundColor: Colors.grey[100],
         body: SafeArea(
             child: isJobAvailable
                 ? Column(
                     children: [
                       Expanded(
-                        child: ListView.builder(
+                        child: ListView.separated(
                             itemCount: jobs.length,
+                            separatorBuilder: (context, index) => Divider(
+                                  thickness: 0.4,
+                                  height: 5,
+                                  color: Colors.grey[100],
+                                ),
                             itemBuilder: (BuildContext context, int index) {
                               var time = jobs[index].lastDate;
-                              return Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Container(
-                                    margin: EdgeInsets.only(bottom: 4),
-                                    child: ExpandablePanel(
-                                      header: ListTile(
-                                        tileColor: Colors.deepPurple,
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(15),
-                                          side: BorderSide(
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                        title: TextWidget(
-                                            text: "${jobs[index].jobName}",
-                                            color: Colors.white),
-                                        subtitle: Column(
+                              return Container(
+                                margin: EdgeInsets.symmetric(
+                                    horizontal: 20, vertical: 10),
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 20, vertical: 15),
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(20)),
+                                child: ExpandablePanel(
+                                  header: ListTile(
+                                    contentPadding: EdgeInsets.zero,
+                                    title: TextWidget(
+                                      text: "${jobs[index].jobName}",
+                                      color: Colors.black,
+                                      fontSize: 16,
+                                    ),
+                                    subtitle: Column(
+                                      children: [
+                                        Row(
                                           children: [
-                                            Row(
-                                              children: [
-                                                const Icon(
-                                                  Icons.calendar_month,
-                                                  color: Colors.white,
-                                                ),
-                                                Hspace(10),
-                                                TextWidget(
-                                                    text:
-                                                        "Last date to apply : " +
-                                                            intl.DateFormat(
-                                                                    'd/M/y')
-                                                                .format(time),
-                                                    color: Colors.white,
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 12),
-                                              ],
+                                            const Icon(
+                                              Icons.calendar_month,
+                                              color: Colors.black,
                                             ),
-                                            Row(
-                                              children: [
-                                                const Icon(
-                                                    Icons
-                                                        .cast_for_education_outlined,
-                                                    color: Colors.white),
-                                                Hspace(10),
-                                                TextWidget(
-                                                    text:"Qualififcation : ${jobs[index].qualification}",
-                                                        color: Colors.white,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        fontSize: 12),
-                                              ],
-                                            ),
+                                            Hspace(10),
+                                            TextWidget(
+                                                text: "Last date to apply : " +
+                                                    intl.DateFormat('d/M/y')
+                                                        .format(time),
+                                                color: Colors.black,
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 14),
                                           ],
                                         ),
-                                        // trailing: ElevatedButton(
-                                        //   onPressed: () {},
-                                        //   child: Text("Apply"),
-                                        // ),
-                                      ),
-                                      collapsed: SizedBox(),
-                                      expanded: Container(
-                                        decoration: BoxDecoration(
-                                          boxShadow: [
-                                            BoxShadow(
-                                              color: Colors.white,
-                                            ),
-                                          ],
-                                          border: Border.all(
-                                            color: Colors.grey,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(12.0),
-                                        ),
-                                        // padding: EdgeInsets.symmetric(vertical: 4,horizontal: 8),
-                                        child: Column(
+                                        Row(
                                           children: [
-                                            Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      TextWidget(
-                                                          text: "Job Category"),
-                                                      TextWidget(
-                                                          text:
-                                                              "${jobs[index].jobCategory}",
-                                                          color: Colors.green),
-                                                    ]),
-                                                Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      TextWidget(
-                                                          text:
-                                                              "Job Description"),
-                                                      TextWidget(
-                                                          text:
-                                                              "${jobs[index].description}",
-                                                          color: Colors.green),
-                                                    ]),
-                                              ],
-                                            ),
-                                            Vspace(4),
-                                            Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      TextWidget(
-                                                          text: "Salary Range"),
-                                                      TextWidget(
-                                                        text:
-                                                            "${jobs[index].salaryRange}",
-                                                        color: Colors.green,
-                                                      ),
-                                                    ]),
-                                                Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      TextWidget(
-                                                          text: "Qulification"),
-                                                      Vspace(4),
-                                                      TextWidget(
-                                                        text:
-                                                            "${jobs[index].qualification}",
-                                                        color: Colors.green,
-                                                      ),
-                                                    ]),
-                                              ],
-                                            ),
-                                            Vspace(4),
-                                            Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      TextWidget(
-                                                          text:
-                                                              "Date of creation"),
-                                                      Vspace(4),
-                                                      TextWidget(
-                                                          text: intl.DateFormat(
-                                                                  'd/M/y')
-                                                              .format(jobs[
-                                                                      index]
-                                                                  .dateUploaded),
-                                                          color: Colors.green),
-                                                    ]),
-                                                Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      TextWidget(
-                                                          text:
-                                                              "Last Date to apply "),
-                                                      Vspace(4),
-                                                      TextWidget(
-                                                          text: intl.DateFormat(
-                                                                  'd/M/y')
-                                                              .format(jobs[
-                                                                      index]
-                                                                  .lastDate),
-                                                          color: Colors.green)
-                                                    ]),
-                                              ],
-                                            ),
-                                            Padding(
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                      horizontal: 16.0,
-                                                      vertical: 8.0),
-                                              child: Row(
-                                                children: [
-                                                  Expanded(
-                                                    child: OutlinedButton(
-                                                      onPressed: () {},
-                                                      child: const Text(
-                                                          "VISIT WEBSITE"),
-                                                    ),
-                                                  ),
-                                                  const Hspace(10),
-                                                  Expanded(
-                                                    child: ElevatedButton(
-                                                      onPressed: () {},
-                                                      child:
-                                                          const Text("APPLY"),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
+                                            const Icon(
+                                                Icons
+                                                    .cast_for_education_outlined,
+                                                color: Colors.black),
+                                            Hspace(10),
+                                            TextWidget(
+                                                text:
+                                                    "Qualififcation : ${jobs[index].qualification}",
+                                                color: Colors.black,
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 14),
                                           ],
                                         ),
+                                      ],
+                                    ),
+                                  ),
+                                  collapsed: SizedBox(),
+                                  expanded: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Vspace(15),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          TextWidget(
+                                            text: "Job Category",
+                                            fontSize: 16,
+                                          ),
+                                          TextWidget(
+                                            text: "${jobs[index].jobCategory}",
+                                            fontSize: 16,
+                                            color: Colors.green,
+                                          ),
+                                        ],
                                       ),
-                                    )),
+                                      Vspace(15),
+                                      TextWidget(
+                                        text: "Job Description",
+                                        fontSize: 16,
+                                      ),
+                                      Vspace(4),
+                                      TextWidget(
+                                        text: "${jobs[index].description}",
+                                        fontSize: 16,
+                                        color: Colors.green,
+                                      ),
+                                      Vspace(15),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          TextWidget(
+                                            text: "Salary Range",
+                                            fontSize: 16,
+                                          ),
+                                          TextWidget(
+                                            text: "${jobs[index].salaryRange}",
+                                            fontSize: 16,
+                                            color: Colors.green,
+                                          ),
+                                        ],
+                                      ),
+                                      Vspace(15),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          TextWidget(
+                                            text: "Qualification:",
+                                            fontSize: 16,
+                                          ),
+                                          TextWidget(
+                                            text:
+                                                "${jobs[index].qualification}",
+                                            fontSize: 16,
+                                            color: Colors.green,
+                                          ),
+                                        ],
+                                      ),
+                                      Vspace(15),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          TextWidget(
+                                            text: "Date of creation",
+                                            fontSize: 16,
+                                          ),
+                                          TextWidget(
+                                            text:
+                                                "${intl.DateFormat('d/M/y').format(jobs[index].dateUploaded)}",
+                                            fontSize: 16,
+                                            color: Colors.green,
+                                          ),
+                                        ],
+                                      ),
+                                      Vspace(15),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          TextWidget(
+                                            text: "Last Date to apply",
+                                            fontSize: 16,
+                                          ),
+                                          TextWidget(
+                                            text:
+                                                "${intl.DateFormat('d/M/y').format(jobs[index].lastDate)}",
+                                            fontSize: 16,
+                                            color: Colors.green,
+                                          ),
+                                        ],
+                                      ),
+                                      Vspace(15),
+                                      Row(
+                                        children: [
+                                          Expanded(
+                                            child: OutlinedButton(
+                                              onPressed: () {},
+                                              child:
+                                                  const Text("VISIT WEBSITE"),
+                                            ),
+                                          ),
+                                          const Hspace(10),
+                                          Expanded(
+                                            child: ElevatedButton(
+                                              onPressed: () {},
+                                              child: const Text("APPLY"),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
                               );
                             }),
                       )

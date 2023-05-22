@@ -16,12 +16,10 @@ class WelcomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var mediaQuery = MediaQuery.of(context);
     var height = mediaQuery.size.height;
-    var brightness = mediaQuery.platformBrightness;
-    final isDarkMode = brightness == Brightness.dark;
+    // var brightness = mediaQuery.platformBrightness;
 
     return SafeArea(
       child: Scaffold(
-        backgroundColor: isDarkMode ? mySecondaryColor : Colors.white,
         body: SingleChildScrollView(
           padding: const EdgeInsets.all(30),
           child: Column(
@@ -30,14 +28,14 @@ class WelcomeScreen extends StatelessWidget {
               const Text("Government Job Hub",
                   style:
                       TextStyle(fontWeight: FontWeight.bold, fontSize: 26.0)),
-              Image(
-                  image: const AssetImage(promotion),
-                  height: height * 0.65),
+              Image(image: const AssetImage(promotion), height: height * 0.65),
               Column(
                 children: [
-                  TextWidget(text:"Government Employment Guide",fontSize: 20,),
-                  Text(
-                      "Unlock Endless Government Job Opportunities with Ease",
+                  TextWidget(
+                    text: "Government Employment Guide",
+                    fontSize: 20,
+                  ),
+                  Text("Unlock Endless Government Job Opportunities with Ease",
                       style: Theme.of(context).textTheme.bodyLarge,
                       textAlign: TextAlign.center),
                 ],
