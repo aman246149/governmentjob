@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:governmentjob/widgets/vspace.dart';
 
 import '../singup/signup_screen.dart';
 
@@ -26,7 +27,7 @@ class LoginFooterWidget extends StatelessWidget {
         //     label: const Text(mySignInWithGoogle),
         //   ),
         // ),
-        const SizedBox(height: 10),
+        const Vspace(10),
         TextButton(
           onPressed: () {
             Get.offAll(const SignUpScreen());

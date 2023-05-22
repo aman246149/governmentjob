@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:governmentjob/widgets/vspace.dart';
 
 import '../../controllers/login_controller.dart';
 import 'package:get/get.dart';
@@ -30,7 +31,7 @@ class LoginForm extends StatelessWidget {
                     hintText: "E-Mail",
                     border: OutlineInputBorder()),
               ),
-              const SizedBox(height: 10),
+              const Vspace(10),
               TextFormField(
                 controller: controller.password,
                 decoration: const InputDecoration(
@@ -44,7 +45,7 @@ class LoginForm extends StatelessWidget {
                   // ),
                 ),
               ),
-              const SizedBox(height: 20),
+              const Vspace(20),
               // Align(
               //   alignment: Alignment.centerRight,
               //   child: TextButton(

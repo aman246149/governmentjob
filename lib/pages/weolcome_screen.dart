@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:governmentjob/pages/singup/signup_screen.dart';
+import 'package:governmentjob/widgets/hspace.dart';
+import 'package:governmentjob/widgets/vspace.dart';
 
 import '../constants/colors.dart';
 import '../constants/images.dart';
+import '../widgets/custom_text.dart';
 import 'login/login_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -24,25 +27,22 @@ class WelcomeScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              const Text("Wholesaler Side",
+              const Text("Government Job Hub",
                   style:
                       TextStyle(fontWeight: FontWeight.bold, fontSize: 26.0)),
               Image(
-                  image: const AssetImage(myShopingBasket),
-                  height: height * 0.55),
+                  image: const AssetImage(promotion),
+                  height: height * 0.65),
               Column(
                 children: [
-                  Text("B2B Exchange",
-                      style: Theme.of(context).textTheme.displaySmall),
+                  TextWidget(text:"Government Employment Guide",fontSize: 20,),
                   Text(
-                      "Welcome to the ultimate wholesale-retail solution\nRevolutionize your wholesale-retail business with our app",
+                      "Unlock Endless Government Job Opportunities with Ease",
                       style: Theme.of(context).textTheme.bodyLarge,
                       textAlign: TextAlign.center),
                 ],
               ),
-              const SizedBox(
-                height: 15,
-              ),
+              const Vspace(15),
             ],
           ),
         ),
@@ -56,7 +56,7 @@ class WelcomeScreen extends StatelessWidget {
                   child: const Text("LOGIN"),
                 ),
               ),
-              const SizedBox(width: 10.0),
+              const Hspace(10),
               Expanded(
                 child: ElevatedButton(
                   onPressed: () => Get.to(() => const SignUpScreen()),

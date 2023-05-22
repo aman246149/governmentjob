@@ -54,29 +54,4 @@ class UserRepository extends GetxController {
     return userData;
   }
 
-  Future<void> updateUserRecord(UserModel user) async {
-    await _db
-        .collection("Users")
-        .doc(FirebaseAuth.instance.currentUser!.uid)
-        .update(user.toJson())
-        .whenComplete(
-          () {
-            Get.snackbar(
-                "Success", "Your account has been Edited Successfully.",
-                snackPosition: SnackPosition.BOTTOM,
-                backgroundColor: Colors.green.withOpacity(0.1),
-                colorText: Colors.green);
-            print("Profile Updated");
-
-          })
-        .catchError((error, stackTrace) {
-      Get.snackbar("Error",
-          "Something went wrong please check user repository file.",
-          snackPosition: SnackPosition.BOTTOM,
-          backgroundColor: Colors.redAccent.withOpacity(0.1),
-          colorText: Colors.red);
-      print(error.toString());
-    });
-
-  }
 }

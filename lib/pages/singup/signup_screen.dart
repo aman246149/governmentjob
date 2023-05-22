@@ -19,7 +19,7 @@ class SignUpScreen extends StatelessWidget {
             child: Column(
               children: const [
                 SignUpHeaderWidget(
-                  image: myShopingBasketWithPhone,
+                  image: job,
                   title: "Get On Board!",
                   subTitle: "Create your profile to start your Journey.",
                   imageHeight: 0.15,
