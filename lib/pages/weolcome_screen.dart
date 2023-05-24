@@ -4,7 +4,6 @@ import 'package:governmentjob/pages/singup/signup_screen.dart';
 import 'package:governmentjob/widgets/hspace.dart';
 import 'package:governmentjob/widgets/vspace.dart';
 
-import '../constants/colors.dart';
 import '../constants/images.dart';
 import '../widgets/custom_text.dart';
 import 'login/login_screen.dart';
@@ -31,7 +30,7 @@ class WelcomeScreen extends StatelessWidget {
               Image(image: const AssetImage(promotion), height: height * 0.65),
               Column(
                 children: [
-                  TextWidget(
+                  const TextWidget(
                     text: "Government Employment Guide",
                     fontSize: 20,
                   ),

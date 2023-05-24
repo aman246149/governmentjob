@@ -42,8 +42,15 @@ class JobRepository extends GetxController {
   }
 
   // fetch all jobs
-  Future<List<JobModel>> getAllJobs() async {
-    final snapshot = await _db.collection("Jobs").get();
+  Future<List<JobModel>> getIntialAllJobs() async {
+    final snapshot = await _db.collection("Jobs").limit(10).get();
+
+    final jobData = snapshot.docs.map((e) => JobModel.fromSnapshot(e)).toList();
+
+    return jobData;
+  }
+  Future<List<JobModel>> getPaginatedAllJobs(int lastDocumentLength) async {
+    final snapshot = await _db.collection("Jobs").startAfter([lastDocumentLength]).limit(10).get();
 
     final jobData = snapshot.docs.map((e) => JobModel.fromSnapshot(e)).toList();
 
