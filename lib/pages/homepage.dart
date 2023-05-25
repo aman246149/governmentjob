@@ -36,7 +36,10 @@ final ScrollController _scrollController = ScrollController();
   void getJobs() async {
     jobs = await controller.getInitialJobs();
     isJobAvailable = true;
+    if(mounted){
+
     setState(() {});
+    }
   }
 
   
@@ -48,7 +51,7 @@ Future<void> _fetchNextPage() async {
       isNextDocumentLoading = true;
     });
 
-     var resp= await controller.getPaginatedJobs(jobs.length);
+     var resp= await controller.getPaginatedJobs();
 
     setState(() {
       jobs.addAll(resp);
@@ -66,174 +69,149 @@ Future<void> _fetchNextPage() async {
         ),
         backgroundColor: Colors.grey[100],
         body: SafeArea(
-            child: isJobAvailable
+          child: isJobAvailable
                 ? Column(
                     children: [
                       Expanded(
-                        child: ListView.separated(
-                          controller: _scrollController,
-                            itemCount: jobs.length,
-                            separatorBuilder: (context, index) => Divider(
-                                  thickness: 0.4,
-                                  height: 5,
-                                  color: Colors.grey[100],
-                                ),
-                            itemBuilder: (BuildContext context, int index) {
-                              var time = jobs[index].lastDate;
-                              return Container(
-                                margin: const EdgeInsets.symmetric(
-                                    horizontal: 20, vertical: 10),
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 20, vertical: 15),
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(20)),
-                                child: ExpandablePanel(
-                                  header: ListTile(
-                                    contentPadding: EdgeInsets.zero,
-                                    title: TextWidget(
-                                      text: jobs[index].jobName,
-                                      color: Colors.black,
-                                      fontSize: 12,
-                                    ),
-                                    subtitle: Column(
-                                      children: [
+                        child: RefreshIndicator(
+                          onRefresh: () async{
+                            getJobs();
+                          },
+                          child: ListView.separated(
+                            controller: _scrollController,
+                              itemCount: jobs.length,
+                              separatorBuilder: (context, index) => Divider(
+                                    thickness: 0.4,
+                                    height: 5,
+                                    color: Colors.grey[100],
+                                  ),
+                              itemBuilder: (BuildContext context, int index) {
+                                var time = jobs[index].lastDate;
+                                return Container(
+                                  margin: const EdgeInsets.symmetric(
+                                      horizontal: 20, vertical: 10),
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 20, vertical: 15),
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(20)),
+                                  child: ExpandablePanel(
+                                    header: ListTile(
+                                      contentPadding: EdgeInsets.zero,
+                                      title: TextWidget(
+                                        text: jobs[index].jobName,
+                                        color: Colors.black,
+                                        fontSize: 12,
+                                      ),
+                                      subtitle: Column(
+                                        children: [
+                                          Row(
+                                            children: [
+                                              const Icon(
+                                                Icons.calendar_month,
+                                                color: Colors.black,size: 14,
+                                              ),
+                                              const Hspace(10),
+                                              TextWidget(
+                                                  text: "Last date to apply : ${intl.DateFormat('d/M/y')
+                                                          .format(time)}",
+                                                  color: Colors.black,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 13),
+                                            ],
+                                          ),
+                                          Vspace(5),
+                                            //  const Vspace(8),
                                         Row(
+                                        
                                           children: [
-                                            const Icon(
-                                              Icons.calendar_month,
-                                              color: Colors.black,size: 14,
-                                            ),
+                                           Icon(Icons.currency_rupee,color: Colors.black,size: 14,),
                                             const Hspace(10),
                                             TextWidget(
-                                                text: "Last date to apply : ${intl.DateFormat('d/M/y')
-                                                        .format(time)}",
-                                                color: Colors.black,
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 13),
+                                              text: "Salary Range ${jobs[index].salaryRange}",
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.black,
+                                            ),
                                           ],
                                         ),
-                                        Vspace(5),
+                                        ],
+                                      ),
+                                    ),
+                                    collapsed: const SizedBox(),
+                                    expanded: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        const Vspace(8),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            const TextWidget(
+                                              text: "Job Category",
+                                              fontSize: 12,
+                                            ),
+                                            TextWidget(
+                                              text: jobs[index].jobCategory,
+                                              fontSize: 12,
+                                              color: Colors.purple,
+                                            ),
+                                          ],
+                                        ),
+                                        const Vspace(8),
+                                        const TextWidget(
+                                          text: "Job Description",
+                                          fontSize: 12,
+                                        ),
+                                        const Vspace(4),
+                                        TextWidget(
+                                          text: jobs[index].description,
+                                          fontSize: 12,
+                                          color: Colors.purple,
+                                        ),
+                                    
+                                       const Vspace(8),
+                                        Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            const TextWidget(
+                                              text: "Qualification:",
+                                              fontSize: 12,
+                                            ),
+                                            Flexible(
+                                              child: TextWidget(
+                                                text:
+                                                    "${jobs[index].qualification}",
+                                                fontSize: 12,
+                                                color: Colors.purple,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        const Vspace(8),
+                                      
+                                       
+                                      
+                                        const Vspace(15),
                                         Row(
                                           children: [
-                                            const Icon(
-                                                Icons
-                                                    .cast_for_education_outlined,size: 14,
-                                                color: Colors.black),
-                                            const Hspace(10),
-                                            TextWidget(
-                                                text:
-                                                    "Qualififcation : ${jobs[index].qualification}",
-                                                color: Colors.black,
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 13),
+                                            
+                                            Expanded(
+                                              child: ElevatedButton(
+                                                style: ElevatedButton.styleFrom(backgroundColor: Colors.grey[100]),
+                                                onPressed: () {},
+                                                child: const TextWidget(text: "APPLY",fontWeight: FontWeight.bold,),
+                                              ),
+                                            ),
                                           ],
                                         ),
                                       ],
                                     ),
                                   ),
-                                  collapsed: const SizedBox(),
-                                  expanded: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      const Vspace(8),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          const TextWidget(
-                                            text: "Job Category",
-                                            fontSize: 12,
-                                          ),
-                                          TextWidget(
-                                            text: jobs[index].jobCategory,
-                                            fontSize: 12,
-                                            color: Colors.purple,
-                                          ),
-                                        ],
-                                      ),
-                                      const Vspace(8),
-                                      const TextWidget(
-                                        text: "Job Description",
-                                        fontSize: 12,
-                                      ),
-                                      const Vspace(4),
-                                      TextWidget(
-                                        text: jobs[index].description,
-                                        fontSize: 12,
-                                        color: Colors.purple,
-                                      ),
-                                     const Vspace(8),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          const TextWidget(
-                                            text: "Salary Range",
-                                            fontSize: 12,
-                                          ),
-                                          TextWidget(
-                                            text: "${jobs[index].salaryRange}",
-                                            fontSize: 12,
-                                            color: Colors.purple,
-                                          ),
-                                        ],
-                                      ),
-                                     const Vspace(8),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          const TextWidget(
-                                            text: "Qualification:",
-                                            fontSize: 12,
-                                          ),
-                                          TextWidget(
-                                            text:
-                                                "${jobs[index].qualification}",
-                                            fontSize: 12,
-                                            color: Colors.purple,
-                                          ),
-                                        ],
-                                      ),
-                                      const Vspace(8),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          const TextWidget(
-                                            text: "Date of creation",
-                                            fontSize: 12,
-                                          ),
-                                          TextWidget(
-                                            text:
-                                                intl.DateFormat('d/M/y').format(jobs[index].dateUploaded),
-                                            fontSize: 12,
-                                            color: Colors.purple,
-                                          ),
-                                        ],
-                                      ),
-                                     
-                                    
-                                      const Vspace(15),
-                                      Row(
-                                        children: [
-                                          
-                                          Expanded(
-                                            child: ElevatedButton(
-                                              style: ElevatedButton.styleFrom(backgroundColor: Colors.grey[100]),
-                                              onPressed: () {},
-                                              child: const TextWidget(text: "APPLY",fontWeight: FontWeight.bold,),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              );
-                            }),
+                                );
+                              }),
+                        ),
                       )
                     ],
                   )
@@ -241,7 +219,8 @@ Future<void> _fetchNextPage() async {
                     child: SizedBox(
                         width: 35.0,
                         child: CircularProgressIndicator(
-                            valueColor: AlwaysStoppedAnimation(Colors.red))))));
+                            valueColor: AlwaysStoppedAnimation(Colors.red)))),
+        ));
   }
 }
 

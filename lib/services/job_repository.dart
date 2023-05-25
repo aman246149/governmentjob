@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../constants/globalvariable.dart';
 import '../models/job_model.dart';
 
 class JobRepository extends GetxController {
@@ -43,17 +44,27 @@ class JobRepository extends GetxController {
 
   // fetch all jobs
   Future<List<JobModel>> getIntialAllJobs() async {
-    final snapshot = await _db.collection("Jobs").limit(10).get();
+    final snapshot = await _db.collection("Jobs").limit(10).orderBy("dateUploaded",descending: true).get();
 
     final jobData = snapshot.docs.map((e) => JobModel.fromSnapshot(e)).toList();
 
+    if (snapshot.docs.isNotEmpty) {
+    lastSnapShot = snapshot.docs.last;
+    }
+    
     return jobData;
   }
-  Future<List<JobModel>> getPaginatedAllJobs(int lastDocumentLength) async {
-    final snapshot = await _db.collection("Jobs").startAfter([lastDocumentLength]).limit(10).get();
+
+  Future<List<JobModel>> getPaginatedAllJobs() async {
+      if (lastSnapShot == null) {
+    return []; // No more documents to fetch
+  }
+    final snapshot = await _db.collection("Jobs").orderBy('dateUploaded',descending: true).startAfter([lastSnapShot!['dateUploaded']]).limit(10).get();
 
     final jobData = snapshot.docs.map((e) => JobModel.fromSnapshot(e)).toList();
-
+    if (snapshot.docs.isNotEmpty) {
+    lastSnapShot = snapshot.docs.last;
+    }
     return jobData;
   }
 }

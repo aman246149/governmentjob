@@ -1,4 +1,5 @@
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 
 import '../models/job_model.dart';
@@ -8,6 +9,7 @@ class JobController extends GetxController {
   static JobController get instance => Get.find();
 
   var isLoading = false.obs;
+
 
 //TextField Controllers to get data from TextFields
 //   final jobName = TextEditingController();
@@ -26,8 +28,8 @@ class JobController extends GetxController {
     isLoading.value = false;
     return jobRepo.getIntialAllJobs();
   }
-  Future<List<JobModel>> getPaginatedJobs(int lastDocumentLength) async {
+  Future<List<JobModel>> getPaginatedJobs() async {
   
-    return jobRepo.getPaginatedAllJobs(lastDocumentLength);
+    return jobRepo.getPaginatedAllJobs();
   }
 }
