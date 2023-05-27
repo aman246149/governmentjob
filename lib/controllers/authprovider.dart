@@ -29,6 +29,7 @@ class AuthProvider extends ChangeNotifier  {
    
     isLoading=false;
     notifyListeners();
+    // ignore: use_build_context_synchronously
     Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => const HomeScreen()));
 
     } catch (e) {
@@ -49,6 +50,7 @@ class AuthProvider extends ChangeNotifier  {
      await UserRepository.createUser(UserModel(email: email.text, password: password.text, fullName: fullName.text,fcm: fcm));
     isLoading=false;
     notifyListeners();
+    // ignore: use_build_context_synchronously
     Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => const HomeScreen()));
 
     } catch (e) {
