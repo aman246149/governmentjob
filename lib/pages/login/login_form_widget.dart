@@ -40,21 +40,11 @@ class LoginForm extends StatelessWidget {
                   labelText: "Password",
                   hintText: "Password",
                   border: OutlineInputBorder(),
-                  // suffixIcon: IconButton(
-                  //   onPressed: null,
-                  //   icon: Icon(Icons.remove_red_eye_sharp),
-                  // ),
+                
                 ),
               ),
               const Vspace(20),
-              // Align(
-              //   alignment: Alignment.centerRight,
-              //   child: TextButton(
-              //       onPressed: () {
-              //         // WForgetPasswordScreen.buildShowModalBottomSheet(context);
-              //       },
-              //       child: const Text(myForgetPassword)),
-              // ),
+         
               SizedBox(
                 width: double.infinity,
                 child: context.watch<AuthProvider>().isLoading ? const Center(child: SizedBox(width:35.0,child: CircularProgressIndicator(valueColor: AlwaysStoppedAnimation(Colors.red)))) :ElevatedButton(

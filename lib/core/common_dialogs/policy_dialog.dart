@@ -44,15 +44,10 @@ class PolicyDialog extends StatelessWidget {
               },
             ),
           ),
-          ElevatedButton(
-            onPressed: () => Navigator.of(context).pop(),
+          GestureDetector(
+            onTap: () =>  Navigator.of(context).pop(),
             child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(radius),
-                  bottomRight: Radius.circular(radius),
-                ),
-              ),
+              color: Colors.white,
               alignment: Alignment.center,
               height: 50,
               width: double.infinity,

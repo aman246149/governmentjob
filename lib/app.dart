@@ -5,7 +5,7 @@ import 'package:governmentjob/controllers/job_controller.dart';
 import 'package:governmentjob/pages/initial_screen.dart';
 import 'package:governmentjob/services/navigation_service.dart';
 import 'package:provider/provider.dart';
-
+import 'package:flex_color_scheme/flex_color_scheme.dart';
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -21,10 +21,7 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Demo',
         navigatorKey: GetIt.I<NavigationService>().navigatorKey,
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          useMaterial3: true,
-          primarySwatch: Colors.blue,
-        ),
+        theme: FlexThemeData.light(scheme: FlexScheme.mallardGreen,useMaterial3: true),
         home:  InitialScreen(),
       ),
     );

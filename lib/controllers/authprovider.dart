@@ -1,16 +1,15 @@
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:governmentjob/data_repository/user_repository.dart';
 import 'package:governmentjob/models/user_model.dart';
 import 'package:governmentjob/pages/homepage.dart';
-import 'package:governmentjob/pages/singup/signup_screen.dart';
 import 'package:governmentjob/pages/weolcome_screen.dart';
 import 'package:governmentjob/services/pushnotificaiton_service.dart';
 import 'package:governmentjob/widgets/custom_snackbar.dart';
 
 
 import '../data_repository/authentication_repository.dart';
-import '../pages/login/login_screen.dart';
 
 
 class AuthProvider extends ChangeNotifier  {
@@ -29,16 +28,15 @@ class AuthProvider extends ChangeNotifier  {
        isLoading = true;
     notifyListeners();
      await AuthenticationRepository.loginWithEmailAndPassword(email.text, password.text);
-   
     isLoading=false;
     notifyListeners();
     // ignore: use_build_context_synchronously
-    Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => const HomeScreen()));
-
+     Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>const HomeScreen()), (Route<dynamic> route) => false);
     } catch (e) {
       isLoading=false;
     notifyListeners();
-    errorSnackBar(context, e.toString());
+    var exception=e as FirebaseAuthException;
+    errorSnackBar(context,exception.code);
     }
    
   }
@@ -54,12 +52,13 @@ class AuthProvider extends ChangeNotifier  {
     isLoading=false;
     notifyListeners();
     // ignore: use_build_context_synchronously
-    Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => const HomeScreen()));
+     Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>const HomeScreen()), (Route<dynamic> route) => false);
 
     } catch (e) {
       isLoading=false;
     notifyListeners();
-     errorSnackBar(context, e.toString());
+      var exception=e as FirebaseAuthException;
+     errorSnackBar(context, exception.code);
     }
   }
 
@@ -67,7 +66,8 @@ class AuthProvider extends ChangeNotifier  {
     try {
       await AuthenticationRepository.logOut();
 
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => const WelcomeScreen()));
+      // ignore: use_build_context_synchronously
+       Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>const WelcomeScreen()), (Route<dynamic> route) => false);
     } catch (e) {
       isLoading=false;
       notifyListeners();

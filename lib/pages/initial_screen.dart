@@ -1,7 +1,7 @@
 import "package:firebase_auth/firebase_auth.dart";
 import "package:flutter/material.dart";
 import "package:governmentjob/pages/homepage.dart";
-import "package:governmentjob/pages/login/login_screen.dart";
+import "./weolcome_screen.dart";
 
 class InitialScreen extends StatefulWidget {
    InitialScreen({Key? key}) : super(key: key);
@@ -41,7 +41,7 @@ class _InitialScreenState extends State<InitialScreen> {
             }
           }
 
-          return const LoginScreen();
+          return const WelcomeScreen();
         },
       ),
     );

@@ -15,7 +15,7 @@ void showDialogData(BuildContext context) {
           backgroundColor: Colors.black,
           title: Text(
             "About Us",
-            style: Theme.of(context).textTheme.bodyText1!.copyWith(
+            style: Theme.of(context).textTheme.bodyLarge!.copyWith(
               color: Colors.white,
               fontSize: 14,
             ),
@@ -121,7 +121,7 @@ class DialogRowWidget extends StatelessWidget {
         children: [
           Text(
             text,
-            style: Theme.of(context).textTheme.bodyText1!.copyWith(
+            style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                 color: Colors.white,
                 fontSize: 14,
                 fontWeight: FontWeight.normal),
