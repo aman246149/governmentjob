@@ -8,6 +8,8 @@ import 'package:governmentjob/widgets/vspace.dart';
 import 'package:intl/intl.dart' as intl;
 import 'package:provider/provider.dart';
 
+import '../core/common_dialogs/about_us_dialog.dart';
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -67,6 +69,14 @@ Future<void> _fetchNextPage() async {
     return Scaffold(
         appBar: AppBar(
           title: const Text("JOBS"),
+          actions: [
+            IconButton(
+                onPressed: () {
+                  showDialogData(context);
+                },
+                icon: const Icon(Icons.more_vert)),
+            const Hspace(8)
+          ],
         ),
      
         backgroundColor: Colors.grey[100],

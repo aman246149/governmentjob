@@ -23,7 +23,7 @@ class WelcomeScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              const Text("Government Job Hub",
+                const Text("Government Job Hub",
                   style:
                       TextStyle(fontWeight: FontWeight.bold, fontSize: 26.0)),
               Image(image: const AssetImage(promotion), height: height * 0.65),
