@@ -3,7 +3,6 @@ import 'package:get_it/get_it.dart';
 import 'package:governmentjob/controllers/authprovider.dart';
 import 'package:governmentjob/controllers/job_controller.dart';
 import 'package:governmentjob/pages/initial_screen.dart';
-import 'package:governmentjob/pages/weolcome_screen.dart';
 import 'package:governmentjob/services/navigation_service.dart';
 import 'package:provider/provider.dart';
 

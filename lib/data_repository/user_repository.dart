@@ -14,6 +14,7 @@ static  final _db = FirebaseFirestore.instance;
   // -- Storing data
  static Future<dynamic>  createUser(UserModel user) async {
    try {
+ 
       await _db.collection("Users").doc(FirebaseAuth.instance.currentUser!.uid).set(user.toJson()) ;
    } catch (e) {
      rethrow;

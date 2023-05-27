@@ -7,14 +7,16 @@ class UserModel {
   final String? phoneNo;
   final String password;
   final String? imageLink;
+  final String? fcm;
 
-  const UserModel({
+  const UserModel( {
     this.id,
     required this.email,
     required this.password,
     required this.fullName,
     this.phoneNo,
-    this.imageLink
+    this.imageLink,
+    this.fcm,
   });
 
   //firebase does not stores data directly we need to convert data into json format
@@ -22,6 +24,7 @@ class UserModel {
     return {
       "fullName": fullName,
       "email": email,
+      "fcm":fcm
     };
   }
 
@@ -35,7 +38,8 @@ class UserModel {
             password: data["password"],
             fullName: data["fullName"],
             phoneNo: data["phone"],
-          imageLink:data["imageLink"]
+          imageLink:data["imageLink"],
+          fcm: data["fcm"]
         );
   }
 }
