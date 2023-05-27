@@ -1,35 +1,50 @@
 
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:get/get.dart';
+import 'package:flutter/material.dart';
 
+import '../data_repository/job_repository.dart';
 import '../models/job_model.dart';
-import '../services/job_repository.dart';
+import '../widgets/custom_snackbar.dart';
 
-class JobController extends GetxController {
-  static JobController get instance => Get.find();
+class JobProvider extends ChangeNotifier {
+ 
 
-  var isLoading = false.obs;
+  bool isLoading = true;
 
 
-//TextField Controllers to get data from TextFields
-//   final jobName = TextEditingController();
-//   final jobCategiry = TextEditingController();
-//   final description = TextEditingController();
-//   final lastDate = TextEditingController();
 
-  final jobRepo = Get.put(JobRepository());
 
-  Future<void> createJob(JobModel job) async {
-    await jobRepo.createJob(job);
-    isLoading.value = false;
+ 
+
+
+  Future<List<JobModel>> getInitialJobs(BuildContext context) async {
+      try {
+    List<JobModel> initialJobs=    await JobRepository.getIntialAllJobs();
+         isLoading = false;
+        notifyListeners();
+        return initialJobs;
+      
+      } catch (e) {
+         isLoading = false;
+        notifyListeners();
+        errorSnackBar(context, e.toString());
+        rethrow;
+      }
   }
-
-  Future<List<JobModel>> getInitialJobs() async {
-    isLoading.value = false;
-    return jobRepo.getIntialAllJobs();
-  }
-  Future<List<JobModel>> getPaginatedJobs() async {
+  Future<List<JobModel>> getPaginatedJobs(BuildContext context) async {
   
-    return jobRepo.getPaginatedAllJobs();
+     try {
+        isLoading = true;
+        notifyListeners();
+    List<JobModel> paginatedJobs=    await JobRepository.getPaginatedAllJobs();
+         isLoading = false;
+        notifyListeners();
+        return paginatedJobs;
+      
+      } catch (e) {
+         isLoading = false;
+        notifyListeners();
+        errorSnackBar(context, e.toString());
+        rethrow;
+      }
   }
 }

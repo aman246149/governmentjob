@@ -1,9 +1,10 @@
 
 import 'package:flutter/material.dart';
+import 'package:governmentjob/controllers/authprovider.dart';
 import 'package:governmentjob/widgets/vspace.dart';
+import 'package:provider/provider.dart';
 
-import '../../controllers/login_controller.dart';
-import 'package:get/get.dart';
+
 
 
 class LoginForm extends StatelessWidget {
@@ -13,18 +14,18 @@ class LoginForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(LoginController());
+  
     final formKey = GlobalKey<FormState>();
 
     return Form(
       key: formKey,
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 20),
-        child: Obx(()=> Column(
+        child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               TextFormField(
-                controller: controller.email,
+                controller: context.read<AuthProvider>().email,
                 decoration: const InputDecoration(
                     prefixIcon: Icon(Icons.person_outline_outlined),
                     labelText: "E-Mail",
@@ -33,7 +34,7 @@ class LoginForm extends StatelessWidget {
               ),
               const Vspace(10),
               TextFormField(
-                controller: controller.password,
+                controller: context.read<AuthProvider>().password,
                 decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.fingerprint),
                   labelText: "Password",
@@ -56,12 +57,10 @@ class LoginForm extends StatelessWidget {
               // ),
               SizedBox(
                 width: double.infinity,
-                child: controller.isLoading.value ? const Center(child: SizedBox(width:35.0,child: CircularProgressIndicator(valueColor: AlwaysStoppedAnimation(Colors.red)))) :ElevatedButton(
+                child: context.watch<AuthProvider>().isLoading ? const Center(child: SizedBox(width:35.0,child: CircularProgressIndicator(valueColor: AlwaysStoppedAnimation(Colors.red)))) :ElevatedButton(
                   onPressed: () {
                     if (formKey.currentState!.validate()) {
-                      LoginController.instance.loginUser(
-                          controller.email.text.trim(),
-                          controller.password.text.trim());
+                      context.read<AuthProvider>().loginUser(context);
                     }
                   },
                   child: const Text("LOGIN"),
@@ -70,7 +69,9 @@ class LoginForm extends StatelessWidget {
             ],
           ),
         ),
-      ),
+    
+
+      
     );
   }
 }

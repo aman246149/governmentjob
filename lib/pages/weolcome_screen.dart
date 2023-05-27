@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:governmentjob/pages/singup/signup_screen.dart';
 import 'package:governmentjob/widgets/hspace.dart';
 import 'package:governmentjob/widgets/vspace.dart';
@@ -49,14 +48,14 @@ class WelcomeScreen extends StatelessWidget {
             children: [
               Expanded(
                 child: OutlinedButton(
-                  onPressed: () => Get.to(() => const LoginScreen()),
+                  onPressed: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => const LoginScreen())),
                   child: const Text("LOGIN"),
                 ),
               ),
               const Hspace(10),
               Expanded(
                 child: ElevatedButton(
-                  onPressed: () => Get.to(() => const SignUpScreen()),
+                  onPressed: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => const SignUpScreen())),
                   child: const Text("SIGNUP"),
                 ),
               ),

@@ -1,12 +1,13 @@
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:governmentjob/controllers/job_controller.dart';
 import 'package:governmentjob/models/job_model.dart';
 import 'package:governmentjob/widgets/custom_text.dart';
 import 'package:governmentjob/widgets/hspace.dart';
 import 'package:governmentjob/widgets/vspace.dart';
 import 'package:intl/intl.dart' as intl;
+import 'package:provider/provider.dart';
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -16,7 +17,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final controller = Get.put(JobController());
+
   List<JobModel> jobs = [];
   bool isJobAvailable = false;
 
@@ -34,7 +35,7 @@ final ScrollController _scrollController = ScrollController();
   }
 
   void getJobs() async {
-    jobs = await controller.getInitialJobs();
+    jobs = await context.read<JobProvider>().getInitialJobs(context);
     isJobAvailable = true;
     if(mounted){
 
@@ -51,7 +52,7 @@ Future<void> _fetchNextPage() async {
       isNextDocumentLoading = true;
     });
 
-     var resp= await controller.getPaginatedJobs();
+     var resp= await context.read<JobProvider>().getPaginatedJobs(context);
 
     setState(() {
       jobs.addAll(resp);
@@ -67,6 +68,7 @@ Future<void> _fetchNextPage() async {
         appBar: AppBar(
           title: const Text("JOBS"),
         ),
+     
         backgroundColor: Colors.grey[100],
         body: SafeArea(
           child: isJobAvailable
@@ -77,7 +79,9 @@ Future<void> _fetchNextPage() async {
                           onRefresh: () async{
                             getJobs();
                           },
-                          child: ListView.separated(
+                          child:
+                          jobs.isEmpty?const Center(child: Text("No Jobs Yet"),):
+                           ListView.separated(
                             controller: _scrollController,
                               itemCount: jobs.length,
                               separatorBuilder: (context, index) => Divider(
@@ -120,12 +124,12 @@ Future<void> _fetchNextPage() async {
                                                   fontSize: 13),
                                             ],
                                           ),
-                                          Vspace(5),
+                                          const Vspace(5),
                                             //  const Vspace(8),
                                         Row(
                                         
                                           children: [
-                                           Icon(Icons.currency_rupee,color: Colors.black,size: 14,),
+                                           const Icon(Icons.currency_rupee,color: Colors.black,size: 14,),
                                             const Hspace(10),
                                             TextWidget(
                                               text: "Salary Range ${jobs[index].salaryRange}",

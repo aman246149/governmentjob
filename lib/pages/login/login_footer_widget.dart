@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+
 import 'package:governmentjob/widgets/vspace.dart';
 
 import '../singup/signup_screen.dart';
@@ -30,7 +30,9 @@ class LoginFooterWidget extends StatelessWidget {
         const Vspace(10),
         TextButton(
           onPressed: () {
-            Get.offAll(const SignUpScreen());
+        
+           Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => const SignUpScreen()));
+
           },
           child: Text.rich(
             TextSpan(

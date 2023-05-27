@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:governmentjob/controllers/authprovider.dart';
 import 'package:governmentjob/widgets/vspace.dart';
+import 'package:provider/provider.dart';
 
-import '../../controllers/signup_controller.dart';
-import '../../models/user_model.dart';
+
 
 class SignUpFormWidget extends StatelessWidget {
   const SignUpFormWidget({
@@ -12,32 +12,31 @@ class SignUpFormWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(SignUpController());
+  
     final formKey = GlobalKey<FormState>();
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 20),
       child: Form(
         key: formKey,
-        child: Obx(
-          () => Column(
+        child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               TextFormField(
-                controller: controller.fullName,
+                controller: context.read<AuthProvider>().fullName,
                 decoration: const InputDecoration(
                     label: Text("Full Name"),
                     prefixIcon: Icon(Icons.person_outline_rounded)),
               ),
               const Vspace(10),
               TextFormField(
-                controller: controller.email,
+                controller: context.read<AuthProvider>().email,
                 decoration: const InputDecoration(
                     label: Text("E-Mail"),
                     prefixIcon: Icon(Icons.email_outlined)),
               ),
               const Vspace(10),
               TextFormField(
-                controller: controller.password,
+                controller:  context.read<AuthProvider>().password,
                 decoration: const InputDecoration(
                     label: Text("Password"),
                     prefixIcon: Icon(Icons.fingerprint)),
@@ -45,7 +44,7 @@ class SignUpFormWidget extends StatelessWidget {
               const Vspace(20),
               SizedBox(
                 width: double.infinity,
-                child: controller.isLoading.value
+                child:  context.watch<AuthProvider>().isLoading
                     ? const Center(
                         child: SizedBox(
                             width: 35.0,
@@ -55,12 +54,8 @@ class SignUpFormWidget extends StatelessWidget {
                     : ElevatedButton(
                         onPressed: () {
                           if (formKey.currentState!.validate()) {
-                            final user = UserModel(
-                              email: controller.email.text.trim(),
-                              password: controller.password.text.trim(),
-                              fullName: controller.fullName.text.trim(),
-                            );
-                            controller.registerUser(user);
+                         
+                             context.read<AuthProvider>().registerUser(context);
                           }
                         },
                         child: const Text("SIGNUP"),
@@ -68,7 +63,7 @@ class SignUpFormWidget extends StatelessWidget {
               )
             ],
           ),
-        ),
+       
       ),
     );
   }
