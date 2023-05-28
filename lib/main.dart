@@ -1,4 +1,5 @@
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:governmentjob/app.dart';
@@ -23,6 +24,7 @@ void main() async {
       return true;
     };
   await FirebasePushNotificationService.initFirebase();
+  await FirebaseMessaging.instance.subscribeToTopic("jobNotifications");
   await FirebasePushNotificationService.requestPermission();
   await NotificationService().initializePlatformNotifications();
   setupLocator();
