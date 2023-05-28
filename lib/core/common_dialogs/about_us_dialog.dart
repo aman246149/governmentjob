@@ -76,7 +76,19 @@ void showDialogData(BuildContext context) {
                     ontap: () {
                       Navigator.pop(context);
                       showCommonDialog(context, "Acknowledgment",
-                          "Thanks you.. firebase flutter for providing opensource platform to develop such effective application .");
+                        '''
+                        Thanks you.. 
+
+                        Firebase Flutter for providing opensource platform to develop such effective application .
+
+                        FlatIcon for app icon  <a href="https://www.flaticon.com/free-icons/job" title="job icons">Job icons created by Freepik - Flaticon</a>
+
+                        PubDev for dependencies
+
+                        Internet google
+                        
+                        Please pardon me If I miss any attribution, message me at amanthapliyal14@gmail.com 
+                        ''');
                     },
                   ),
                   const Vspace(8),
