@@ -185,13 +185,26 @@ Future<void> _fetchNextPage() async {
                                     
                                        const Vspace(8),
                                         const TextWidget(
-                                          text: "Qualification:",
+                                          text: "Qualification",
                                           fontSize: 12,
                                           fontWeight: FontWeight.bold,
                                         ),
                                        TextWidget(
                                                 text:
                                                     "${jobs[index].qualification}",
+                                                fontSize: 12,
+                                                color: Colors.purple,
+                                              ),
+                                 
+                                       const Vspace(8),
+                                        const TextWidget(
+                                          text: "Job Source",
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                       const TextWidget(
+                                                text:
+                                                    "Internet",
                                                 fontSize: 12,
                                                 color: Colors.purple,
                                               ),

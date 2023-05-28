@@ -23,17 +23,17 @@ class WelcomeScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-                const Text("Government Job Hub",
+                const Text("Job News",
                   style:
                       TextStyle(fontWeight: FontWeight.bold, fontSize: 26.0)),
               Image(image: const AssetImage(promotion), height: height * 0.65),
               Column(
                 children: [
                   const TextWidget(
-                    text: "Government Employment Guide",
+                    text: "Job Employment Guide",
                     fontSize: 20,
                   ),
-                  Text("Unlock Endless Government Job Opportunities with Ease",
+                  Text("Unlock Endless Job Opportunities with Ease",
                       style: Theme.of(context).textTheme.bodyLarge,
                       textAlign: TextAlign.center),
                 ],

@@ -27,7 +27,7 @@ class _InAppWebState extends State<InAppWeb> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("JOBS"),),
+      appBar: AppBar(title: const Text("JOBS"),),
       body: Stack(
         children: [
           InAppWebView(
