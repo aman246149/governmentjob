@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Demo',
         navigatorKey: GetIt.I<NavigationService>().navigatorKey,
         debugShowCheckedModeBanner: false,
-        theme: FlexThemeData.light(scheme: FlexScheme.mallardGreen,useMaterial3: true),
+        theme: FlexThemeData.light(scheme: FlexScheme.damask,useMaterial3: true),
         home:  InitialScreen(),
       ),
     );

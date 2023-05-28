@@ -9,6 +9,7 @@ import 'package:intl/intl.dart' as intl;
 import 'package:provider/provider.dart';
 
 import '../core/common_dialogs/about_us_dialog.dart';
+import '../services/inappwebview.dart';
 
 
 class HomeScreen extends StatefulWidget {
@@ -115,7 +116,8 @@ Future<void> _fetchNextPage() async {
                                       title: TextWidget(
                                         text: jobs[index].jobName,
                                         color: Colors.black,
-                                        fontSize: 12,
+                                        fontSize: 16,
+                                        
                                       ),
                                       subtitle: Column(
                                         children: [
@@ -158,27 +160,23 @@ Future<void> _fetchNextPage() async {
                                           CrossAxisAlignment.start,
                                       children: [
                                         const Vspace(8),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            const TextWidget(
-                                              text: "Job Category",
-                                              fontSize: 12,
-                                            ),
-                                            TextWidget(
-                                              text: jobs[index].jobCategory,
-                                              fontSize: 12,
-                                              color: Colors.purple,
-                                            ),
-                                          ],
+                                        const TextWidget(
+                                          text: "Job Category",
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                        TextWidget(
+                                          text: jobs[index].jobCategory,
+                                          fontSize: 12,
+                                          color: Colors.purple,
                                         ),
                                         const Vspace(8),
                                         const TextWidget(
                                           text: "Job Description",
                                           fontSize: 12,
+                                          fontWeight: FontWeight.bold,
                                         ),
-                                        const Vspace(4),
+                                        // const Vspace(4),
                                         TextWidget(
                                           text: jobs[index].description,
                                           fontSize: 12,
@@ -186,23 +184,17 @@ Future<void> _fetchNextPage() async {
                                         ),
                                     
                                        const Vspace(8),
-                                        Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            const TextWidget(
-                                              text: "Qualification:",
-                                              fontSize: 12,
-                                            ),
-                                            Flexible(
-                                              child: TextWidget(
+                                        const TextWidget(
+                                          text: "Qualification:",
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                       TextWidget(
                                                 text:
                                                     "${jobs[index].qualification}",
                                                 fontSize: 12,
                                                 color: Colors.purple,
                                               ),
-                                            ),
-                                          ],
-                                        ),
                                         const Vspace(8),
                                       
                                        
@@ -214,8 +206,10 @@ Future<void> _fetchNextPage() async {
                                             Expanded(
                                               child: ElevatedButton(
                                                 style: ElevatedButton.styleFrom(backgroundColor: Colors.grey[100]),
-                                                onPressed: () {},
-                                                child: const TextWidget(text: "APPLY",fontWeight: FontWeight.bold,),
+                                                onPressed: () {
+                                                  Navigator.push(context, MaterialPageRoute(builder: (context) =>   InAppWeb(url: jobs[index].websiteLink,)));
+                                                },
+                                                child: const TextWidget(text: "WEBSITE LINK",fontWeight: FontWeight.bold,),
                                               ),
                                             ),
                                           ],
