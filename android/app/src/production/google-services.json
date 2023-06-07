@@ -7,20 +7,12 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1094774088630:android:30c54ebcd481d959d91717",
+        "mobilesdk_app_id": "1:1094774088630:android:550fd8982bf8085cd91717",
         "android_client_info": {
-          "package_name": "com.example.governmentjob"
+          "package_name": "com.jobalerts"
         }
       },
       "oauth_client": [
-        {
-          "client_id": "1094774088630-c9849vgnlupgqt7ac1t9s48abtblhevk.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.governmentjob",
-            "certificate_hash": "9356866c34fab08b9e64d1d37903bc4e35d75fd6"
-          }
-        },
         {
           "client_id": "1094774088630-u4756g55tkmslr0jj7h23sd11i3fie31.apps.googleusercontent.com",
           "client_type": 3
@@ -37,6 +29,13 @@
             {
               "client_id": "1094774088630-u4756g55tkmslr0jj7h23sd11i3fie31.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "1094774088630-bfve11n91fkd6pet2f6lglprthn2mlph.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.jobAdminPanel"
+              }
             }
           ]
         }

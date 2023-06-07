@@ -23,9 +23,15 @@ class DefaultFirebaseOptions {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        return ios;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for ios - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.macOS:
-        return macos;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for macos - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -45,7 +51,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions web = FirebaseOptions(
     apiKey: 'AIzaSyCLac6HXff5bNrhqBMMHPCbWAPwtpDN2UA',
-    appId: '1:1094774088630:web:d739ab477701a7dbd91717',
+    appId: '1:1094774088630:web:e486182785bd7daad91717',
     messagingSenderId: '1094774088630',
     projectId: 'governmentjobs-e96f8',
     authDomain: 'governmentjobs-e96f8.firebaseapp.com',
@@ -54,31 +60,9 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyCM9hBRJbsQsWsV_JUaUYYpscJhW2pQt4g',
-    appId: '1:1094774088630:android:30c54ebcd481d959d91717',
+    appId: '1:1094774088630:android:550fd8982bf8085cd91717',
     messagingSenderId: '1094774088630',
     projectId: 'governmentjobs-e96f8',
     storageBucket: 'governmentjobs-e96f8.appspot.com',
-  );
-
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyBiSfAYByjZwbjJmuVC0o5SgYinSQTgZDQ',
-    appId: '1:1094774088630:ios:73dc853c8c9adeb8d91717',
-    messagingSenderId: '1094774088630',
-    projectId: 'governmentjobs-e96f8',
-    storageBucket: 'governmentjobs-e96f8.appspot.com',
-    androidClientId: '1094774088630-c9849vgnlupgqt7ac1t9s48abtblhevk.apps.googleusercontent.com',
-    iosClientId: '1094774088630-o1ajc28k1eub0alb8oq5gcibmps9gq3j.apps.googleusercontent.com',
-    iosBundleId: 'com.example.governmentjob',
-  );
-
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyBiSfAYByjZwbjJmuVC0o5SgYinSQTgZDQ',
-    appId: '1:1094774088630:ios:73dc853c8c9adeb8d91717',
-    messagingSenderId: '1094774088630',
-    projectId: 'governmentjobs-e96f8',
-    storageBucket: 'governmentjobs-e96f8.appspot.com',
-    androidClientId: '1094774088630-c9849vgnlupgqt7ac1t9s48abtblhevk.apps.googleusercontent.com',
-    iosClientId: '1094774088630-o1ajc28k1eub0alb8oq5gcibmps9gq3j.apps.googleusercontent.com',
-    iosBundleId: 'com.example.governmentjob',
   );
 }

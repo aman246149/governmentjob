@@ -9,24 +9,22 @@ import 'package:governmentjob/services/local_notification_service.dart';
 import 'package:governmentjob/services/navigation_service.dart';
 import 'package:governmentjob/services/pushnotificaiton_service.dart';
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   FlutterError.onError = (errorDetails) {
-      FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
-     
-    };
-    // Pass all uncaught asynchronous errors that aren't handled by the Flutter framework to Crashlytics
-    PlatformDispatcher.instance.onError = (error, stack) {
-      FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
-       
-      return true;
-    };
+    FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
+  };
+  // Pass all uncaught asynchronous errors that aren't handled by the Flutter framework to Crashlytics
+  PlatformDispatcher.instance.onError = (error, stack) {
+    FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+
+    return true;
+  };
   await FirebasePushNotificationService.initFirebase();
   await FirebaseMessaging.instance.subscribeToTopic("jobNotifications");
   await FirebasePushNotificationService.requestPermission();
   await NotificationService().initializePlatformNotifications();
   setupLocator();
-  runApp(const MyApp());
+  runApp(const MyApp(flavour: "Production",));
 }

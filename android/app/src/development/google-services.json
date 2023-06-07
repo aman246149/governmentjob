@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "787601694765",
+    "project_id": "government-job-develop",
+    "storage_bucket": "government-job-develop.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:787601694765:android:8b256ffe7c1228edb818a4",
+        "android_client_info": {
+          "package_name": "com.jobalerts.dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "787601694765-ej2oamlbkl02m8079vqu0odcinrsmt5e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDOwcMjpYIk1jP_X3OIHruAzkXwE30XeQU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "787601694765-ej2oamlbkl02m8079vqu0odcinrsmt5e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

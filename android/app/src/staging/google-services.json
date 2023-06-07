@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1052034951590",
+    "project_id": "government-job-staging",
+    "storage_bucket": "government-job-staging.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1052034951590:android:19464c7692b3fc6dcac767",
+        "android_client_info": {
+          "package_name": "com.jobalerts.stg"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1052034951590-3jq0itpj09mshsp3rc1r2m7c50gc3qu9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAB3H_K6M7ATryxqR7pWrp5WSChxw8bmK8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1052034951590-3jq0itpj09mshsp3rc1r2m7c50gc3qu9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
