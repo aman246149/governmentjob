@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:governmentjob/pages/current_affair/current_affair.dart';
 import 'package:governmentjob/pages/homepage.dart';
+import 'package:governmentjob/pages/quiz/quiz_screen.dart';
 
 class BottomNavigationBarWidget extends StatefulWidget {
   const BottomNavigationBarWidget({Key? key}) : super(key: key);
@@ -14,8 +16,8 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget> {
 
   static const List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
-    HomeScreen(),
-    HomeScreen(),
+    QuizScreen(),
+    CurrentAffair(),
   ];
 
   void _onItemTapped(int index) {
