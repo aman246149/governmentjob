@@ -2,6 +2,7 @@
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:governmentjob/core/theme/app_theme.dart';
 import 'package:provider/provider.dart';
 
 import 'package:governmentjob/controllers/authprovider.dart';
@@ -32,8 +33,7 @@ class MyApp extends StatelessWidget {
         title: flavour,
         navigatorKey: GetIt.I<NavigationService>().navigatorKey,
         debugShowCheckedModeBanner: false,
-        theme:
-            FlexThemeData.light(scheme: FlexScheme.damask, useMaterial3: true),
+        theme: AppTheme.lightTheme(),
         home: InitialScreen(),
       ),
     );

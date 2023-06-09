@@ -1,6 +1,7 @@
 import "package:firebase_auth/firebase_auth.dart";
 import "package:flutter/material.dart";
 import "package:governmentjob/pages/homepage.dart";
+import "package:governmentjob/pages/tabbar/tabbar.dart";
 import "./weolcome_screen.dart";
 
 class InitialScreen extends StatefulWidget {
@@ -25,7 +26,7 @@ class _InitialScreenState extends State<InitialScreen> {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.active) {
             if (snapshot.hasData) {
-              return const HomeScreen();
+              return const BottomNavigationBarWidget();
             } else if (snapshot.hasError) {
               return Center(
                 child: Text(

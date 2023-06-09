@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:governmentjob/core/common_dialogs/policy_dialog.dart';
 import 'package:provider/provider.dart';
@@ -16,9 +15,9 @@ void showDialogData(BuildContext context) {
           title: Text(
             "About Us",
             style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-              color: Colors.white,
-              fontSize: 14,
-            ),
+                  color: Colors.white,
+                  fontSize: 14,
+                ),
           ),
           children: [
             Padding(
@@ -65,7 +64,7 @@ void showDialogData(BuildContext context) {
                     ontap: () {
                       Navigator.pop(context);
                       showCommonDialog(context, "About App",
-                          "Our government job listing application features a user-friendly interface with two key sections: Job Listings, providing an extensive collection of government job openings, and Website Redirection, enabling users to effortlessly navigate to the official websites and apply directly to their desired positions. It streamlines the job search process by offering a centralized platform for users to explore opportunities and seamlessly connect with the relevant job portals, enhancing their chances of securing government employment.");
+                          "Our job listing application features a user-friendly interface with two key sections: Job Listings, providing an extensive collection of government job openings, and Website Redirection, enabling users to effortlessly navigate to the official websites and apply directly to their desired positions. It streamlines the job search process by offering a centralized platform for users to explore opportunities and seamlessly connect with the relevant job portals, enhancing their chances of securing government employment.");
                     },
                   ),
                   const Vspace(8),
@@ -75,8 +74,7 @@ void showDialogData(BuildContext context) {
                     icon: Icons.ac_unit_outlined,
                     ontap: () {
                       Navigator.pop(context);
-                      showCommonDialog(context, "Acknowledgment",
-                        '''
+                      showCommonDialog(context, "Acknowledgment", '''
                         Thanks you.. 
 
                         Firebase Flutter for providing opensource platform to develop such effective application .
