@@ -26,5 +26,7 @@ void main() async {
   await FirebasePushNotificationService.requestPermission();
   await NotificationService().initializePlatformNotifications();
   setupLocator();
-  runApp(const MyApp(flavour: "Production",));
+  runApp(const MyApp(
+    flavour: "Production",
+  ));
 }

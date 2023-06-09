@@ -2,6 +2,7 @@
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:governmentjob/controllers/quiz_provider.dart';
 import 'package:governmentjob/core/theme/app_theme.dart';
 import 'package:provider/provider.dart';
 
@@ -27,6 +28,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) => AuthProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => QuizProvider(),
         ),
       ],
       child: MaterialApp(
