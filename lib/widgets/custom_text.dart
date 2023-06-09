@@ -5,7 +5,7 @@ class TextWidget extends StatelessWidget {
       {super.key,
       required this.text,
       this.fontSize = 14,
-      this.color = Colors.black,
+      this.color,
       this.fontWeight = FontWeight.w500,
       this.textAlign,
       this.lineHeight,
@@ -27,9 +27,9 @@ class TextWidget extends StatelessWidget {
       style: Theme.of(context).textTheme.bodyMedium!.copyWith(
             fontSize: fontSize,
             fontWeight: fontWeight,
-            color: color,
             decoration: textDecoration,
             height: lineHeight,
+            color: color,
             fontFamily: "Poppins",
           ),
     );
